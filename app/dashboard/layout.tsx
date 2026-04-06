@@ -1,3 +1,20 @@
+"use client";
+
+import { DashboardNavigation } from "@/components/dashboard/DashboardNavigation";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { CircleUser, MenuIcon } from "lucide-react";
+
 export default function DashboardLayout({
   children,
 }: {
@@ -5,7 +22,39 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex flex-col w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-      <header className="sticky top-0 flex h-16 items-center justify-between border-b gap-4">hello</header>
+      <header className="sticky top-0 flex h-16 items-center justify-between border-b gap-4">
+        <nav className="font-medium hidden md:flex md:flex-row md:items-center md:gap-5 lg:gap-6 md:text-sm ">
+          <DashboardNavigation className="relative inline-block after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full" />
+        </nav>
+
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              className="shrink-0 md:hidden"
+              variant={"outline"}
+              size={"icon"}
+            >
+              <MenuIcon className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left">
+            <SheetTitle>
+              <nav className="grid p-4 gap-6 font-medium text-lg mt-10">
+                <DashboardNavigation />
+              </nav>
+            </SheetTitle>
+          </SheetContent>
+        </Sheet>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant={"outline"} size={"icon"}>
+              <CircleUser className="h-5 w-5" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent></DropdownMenuContent>
+        </DropdownMenu>
+      </header>
       {children}
     </div>
   );
