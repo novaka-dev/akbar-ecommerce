@@ -1,10 +1,11 @@
-"use client";
-
 import { DashboardNavigation } from "@/components/dashboard/DashboardNavigation";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -13,13 +14,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  getKindeServerSession,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 import { CircleUser, MenuIcon } from "lucide-react";
+import { redirect } from "next/navigation";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user || user.email !== "vaka.coding@gmail.com") {
+    return redirect("/");
+  }
   return (
     <div className="flex flex-col w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <header className="sticky top-0 flex h-16 items-center justify-between border-b gap-4">
@@ -33,6 +45,7 @@ export default function DashboardLayout({
               className="shrink-0 md:hidden"
               variant={"outline"}
               size={"icon"}
+              asChild
             >
               <MenuIcon className="h-5 w-5" />
             </Button>
@@ -48,14 +61,20 @@ export default function DashboardLayout({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant={"outline"} size={"icon"}>
+            <Button variant={"outline"} size={"icon"} className="rounded-full">
               <CircleUser className="h-5 w-5" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent></DropdownMenuContent>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <LogoutLink>Logout</LogoutLink>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
         </DropdownMenu>
       </header>
-      {children}
+      <main className="my-8">{children}</main>
     </div>
   );
 }
