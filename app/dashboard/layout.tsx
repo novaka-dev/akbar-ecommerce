@@ -36,7 +36,7 @@ export default async function DashboardLayout({
     <div className="flex flex-col w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <header className="sticky top-0 flex h-16 items-center justify-between border-b gap-4">
         <nav className="font-medium hidden md:flex md:flex-row md:items-center md:gap-5 lg:gap-6 md:text-sm ">
-          <DashboardNavigation className="relative inline-block after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full" />
+          <DashboardNavigation />
         </nav>
 
         <Sheet>
