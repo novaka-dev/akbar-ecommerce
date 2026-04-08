@@ -45,6 +45,30 @@ export default function OrdersPage() {
               <TableCell>2026-04-08</TableCell>
               <TableCell className="text-right">$100</TableCell>
             </TableRow>
+            <TableRow>
+              <TableCell>
+                <p className="font-semibold">Vaka Ganteng</p>
+                <p className="hidden md:flex text-sm text-muted-foreground">
+                  ahahaha@gmail.com
+                </p>
+              </TableCell>
+              <TableCell>Delivered</TableCell>
+              <TableCell>Cash</TableCell>
+              <TableCell>2026-04-08</TableCell>
+              <TableCell className="text-right">$100</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <p className="font-semibold">Vaka Ganteng</p>
+                <p className="hidden md:flex text-sm text-muted-foreground">
+                  ahahaha@gmail.com
+                </p>
+              </TableCell>
+              <TableCell>Delivered</TableCell>
+              <TableCell>Cash</TableCell>
+              <TableCell>2026-04-08</TableCell>
+              <TableCell className="text-right">$100</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </CardContent>
