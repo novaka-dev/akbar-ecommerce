@@ -39,6 +39,7 @@ export default async function DashboardLayout({
           <DashboardNavigation />
         </nav>
 
+        {/* Mobile Navigation */}
         <Sheet>
           <SheetTrigger asChild>
             <Button
@@ -59,6 +60,7 @@ export default async function DashboardLayout({
           </SheetContent>
         </Sheet>
 
+        {/* Profile */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant={"outline"} size={"icon"} className="rounded-full">

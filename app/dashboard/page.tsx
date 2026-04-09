@@ -6,13 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  DollarSign,
-  ShoppingBag,
-  ShoppingBagIcon,
-  ShoppingCart,
-  User,
-} from "lucide-react";
+import { DollarSign, ShoppingBag, ShoppingCart, User } from "lucide-react";
 
 export default function Dashboard() {
   return (
