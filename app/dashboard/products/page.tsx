@@ -30,7 +30,6 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -70,7 +69,7 @@ export default function ProductPage() {
               </SheetDescription>
             </SheetHeader>
             <form className="flex-1 overflow-y-auto">
-              <div className="grid auto-rows-min gap-6 px-4 pb-10">
+              <div className="grid auto-rows-min gap-6 px-4">
                 <div className="flex flex-col gap-3">
                   <Label>Product Name</Label>
                   <Input
@@ -123,9 +122,6 @@ export default function ProductPage() {
                 </div>
               </div>
             </form>
-            <SheetFooter>
-              <Button type="submit">Save</Button>
-            </SheetFooter>
           </SheetContent>
         </Sheet>
       </div>
