@@ -1,5 +1,6 @@
 "use client";
 
+import { createProduct } from "@/app/actions";
 import { UploadDropzone } from "@/app/utils/uploadthing";
 import { Button } from "@/components/ui/button";
 import {
@@ -45,8 +46,22 @@ import {
 } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { MoreHorizontal, PlusIcon, UserIcon } from "lucide-react";
+import { useActionState } from "react";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { productSchema } from "@/lib/zodSchemas";
 
 export default function ProductPage() {
+  const [lastResult, action] = useActionState(createProduct, undefined);
+  const [form, fields] = useForm({
+    lastResult,
+
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: productSchema });
+    },
+
+    shouldValidate: "onBlur",
+  });
   return (
     <>
       {/* Add Product */}
